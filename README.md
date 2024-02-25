@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jjhickman/tensorflow-lite">
-    <img src="https://www.tensorflow.org/static/site-assets/images/project-logos/tensorflow-lite-logo-social.png" alt="Tensorflow Lite" width="1200" height="675">
+    <img src="https://www.tensorflow.org/static/site-assets/images/project-logos/tensorflow-lite-logo-social.png" alt="Tensorflow Lite" width="2000" height="675">
   </a>
 
 <h3 align="center">tensorflow-lite</h3>
