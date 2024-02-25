@@ -1,11 +1,13 @@
-#/bin/bash
+#!/bin/bash
 set -ex
-NUM_BUILD_CORES=$(grep -c ^processor /proc/cpuinfo)
+TOTAL_CORES=$(grep -c ^processor /proc/cpuinfo)
+NUM_BUILD_CORES=$(( $TOTAL_CORES / 2 ))
+
 git clone https://github.com/tensorflow/tensorflow.git tensorflow_src
 cp CMakeLists.txt tensorflow_src/tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt
 mkdir build
 cd build
-cmake ../tensorflow_src/tensorflow/lite
+cmake -DXNNPACK_ENABLE_ARM_BF16=OFF -DXNNPACK_ENABLE_ARM_I8MM=OFF ../tensorflow_src/tensorflow/lite
 cmake --build . -j $NUM_BUILD_CORES --target install
 cmake --build . -j $NUM_BUILD_CORES -t benchmark_model --target install
 cmake --build . -j $NUM_BUILD_CORES -t label_image --target install
